@@ -40,14 +40,15 @@
   }
 </style>
 <script type="text/javascript">
-  function checkPassword() {
-    if (sessionStorage.getItem("authenticated") === "true") {
+    function checkPassword() {
+    var fileIdentifier = window.location.href; // The URL of the current page
+    if (sessionStorage.getItem(fileIdentifier) === "true") {
       document.getElementById('protectedContent').style.display = 'block';
     } else {
       var password = prompt("Please enter password to view this page", "");
       if (password == "Aa123456") {
         document.getElementById('protectedContent').style.display = 'block';
-        sessionStorage.setItem("authenticated", "true");
+        sessionStorage.setItem(fileIdentifier, "true");
       } else {
         alert("Incorrect password. Please try again.")
       }
